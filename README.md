@@ -14,7 +14,7 @@ Before getting started, make sure you have the following installed on your syste
 1. Clone the repository:
 
 ```shell
-git clone https://github.com/your-username/docker-media-server-template.git
+git clone https://github.com/dan-garden/docker-media-server-template.git
 ```
 
 2. Create a `.env` file in the root directory of the project and add the following environment variables:
@@ -63,7 +63,7 @@ If you need to customize any settings, you can modify the `docker-compose.yml` f
 
 ## Troubleshooting
 
-If you encounter any issues or have questions, please refer to the [FAQ](https://github.com/your-username/docker-media-server-template/wiki/FAQ) or open an issue on the [GitHub repository](https://github.com/your-username/docker-media-server-template/issues).
+If you encounter any issues or have questions, please refer to the [FAQ](https://github.com/dan-garden/docker-media-server-template/wiki/FAQ) or open an issue on the [GitHub repository](https://github.com/dan-garden/docker-media-server-template/issues).
 
 ## Contributing
 
