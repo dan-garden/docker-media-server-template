@@ -1,0 +1,127 @@
+services:
+  # Plex (for media server)
+  plex:
+    image: plexinc/pms-docker
+    container_name: plex
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - PLEX_CLAIM=${PLEX_CLAIM}
+    volumes:
+      - ${CONFIGS_PATH}/plex/config:/config
+      - ${CONFIGS_PATH}/plex/transcode:/transcode
+      - ${MOVIES_PATH}:/media/movies
+      - ${TVSHOWS_PATH}:/media/tv
+    ports:
+      - 32400:32400
+    restart: unless-stopped
+
+  # Radarr (for movies)
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGS_PATH}/radarr/config:/config
+      - ${MOVIES_PATH}:/movies
+      - ${DOWNLOADS_PATH}:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  # Sonarr (for shows)
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGS_PATH}/sonarr/config:/config
+      - ${TVSHOWS_PATH}:/tv
+      - ${DOWNLOADS_PATH}:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  # Deluge (for torrent downloads)
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - DELUGE_LOGLEVEL=error
+    volumes:
+      - ${CONFIGS_PATH}/deluge/config:/config
+      - ${DOWNLOADS_PATH}:/downloads
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+      - 58846:58846
+    restart: unless-stopped
+
+  # Prowlarr (for managing your indexers)
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGS_PATH}/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  # Overseerr (for managing your requests)
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGS_PATH}/overseerr/config:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+
+  # Bazarr (for subtitles)
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGS_PATH}/bazarr/config:/config
+      - ${MOVIES_PATH}:/movies
+      - ${TVSHOWS_PATH}:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
+  # Tautulli (for Plex monitoring)
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGS_PATH}/tautulli/config:/config
+    ports:
+      - 8181:8181
+    restart: unless-stopped
