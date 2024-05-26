@@ -20,6 +20,7 @@ git clone https://github.com/dan-garden/docker-media-server-template.git
 2. Create a `.env` file in the root directory of the project and add the following environment variables:
 
 ```plaintext
+SERVER_NAME=media-server
 TIMEZONE=Etc/UTC
 PUID=1000
 PGID=1000

@@ -1,8 +1,10 @@
+name: ${SERVER_NAME}
+
 services:
   # Plex (for media server)
   plex:
     image: plexinc/pms-docker
-    container_name: plex
+    container_name: ${SERVER_NAME}-plex
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -20,7 +22,7 @@ services:
   # Radarr (for movies)
   radarr:
     image: lscr.io/linuxserver/radarr:latest
-    container_name: radarr
+    container_name: ${SERVER_NAME}-radarr
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -36,7 +38,7 @@ services:
   # Sonarr (for shows)
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
-    container_name: sonarr
+    container_name: ${SERVER_NAME}-sonarr
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -52,7 +54,7 @@ services:
   # Deluge (for torrent downloads)
   deluge:
     image: lscr.io/linuxserver/deluge:latest
-    container_name: deluge
+    container_name: ${SERVER_NAME}-deluge
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -71,7 +73,7 @@ services:
   # Prowlarr (for managing your indexers)
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
-    container_name: prowlarr
+    container_name: ${SERVER_NAME}-prowlarr
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -85,7 +87,7 @@ services:
   # Overseerr (for managing your requests)
   overseerr:
     image: lscr.io/linuxserver/overseerr:latest
-    container_name: overseerr
+    container_name: ${SERVER_NAME}-overseerr
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -99,7 +101,7 @@ services:
   # Bazarr (for subtitles)
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
-    container_name: bazarr
+    container_name: ${SERVER_NAME}-bazarr
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -115,7 +117,7 @@ services:
   # Tautulli (for Plex monitoring)
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
-    container_name: tautulli
+    container_name: ${SERVER_NAME}-tautulli
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
