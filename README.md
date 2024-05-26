@@ -1,5 +1,3 @@
-Here's the updated README with qBittorrent instead of Deluge:
-
 # Docker Media Server Template
 
 Welcome to the Docker Media Server Template! This guide will help you get started with spinning up the docker-compose.yml file using Docker to create a comprehensive media server setup.
