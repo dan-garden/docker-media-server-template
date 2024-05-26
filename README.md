@@ -1,3 +1,5 @@
+Here's the updated README with qBittorrent instead of Deluge:
+
 # Docker Media Server Template
 
 Welcome to the Docker Media Server Template! This guide will help you get started with spinning up the docker-compose.yml file using Docker to create a comprehensive media server setup.
@@ -20,7 +22,6 @@ git clone https://github.com/dan-garden/docker-media-server-template.git
 2. Create a `.env` file in the root directory of the project and add the following environment variables:
 
 ```plaintext
-SERVER_NAME=media-server
 TIMEZONE=Etc/UTC
 PUID=1000
 PGID=1000
@@ -52,7 +53,7 @@ This template includes the following services:
 - **Plex Media Server**: Organize and stream your movies, TV shows, music, and photos.
 - **Radarr**: A movie collection manager that makes it easy to download and manage movies via Usenet and BitTorrent.
 - **Sonarr**: A TV show collection manager that allows you to download and manage TV series.
-- **Deluge**: A lightweight, Free Software, cross-platform BitTorrent client.
+- **qBittorrent**: An open-source BitTorrent client that is fast and efficient.
 - **Prowlarr**: Manages your indexers for Radarr, Sonarr, and other media automation tools.
 - **Overseerr**: A request management and media discovery tool for your media server.
 - **Bazarr**: Manages subtitles for your movies and TV shows.
